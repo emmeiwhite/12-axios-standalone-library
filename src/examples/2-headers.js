@@ -6,10 +6,33 @@ const url = 'https://icanhazdadjoke.com/'
 
 const Headers = () => {
   const [joke, setJoke] = useState('random dad joke')
+  const [error, setError] = useState('')
+  // const [loading, setLoading] = useState(false)
 
-  function fetchDadJoke() {
+  async function fetchDadJoke() {
     console.log('Dad joke to be handled with request headers')
+
+    try {
+      const resp = await axios.get(url, {
+        headers: {
+          Accept: 'application/json'
+        }
+      })
+      console.log(resp)
+      setJoke(resp.data.joke)
+    } catch (error) {
+      setError('Error fetching data!')
+    }
   }
+
+  // if (loading) {
+  //   return <h1>Loading ...</h1>
+  // }
+
+  if (error) {
+    return <p>{Error}</p>
+  }
+
   return (
     <section className="section text-center">
       <button
