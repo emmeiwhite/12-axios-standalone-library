@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import authFetch from '../axios/custom'
+import fetchCustom from '../axios/custom'
 import axios from 'axios'
 
 const randomUserUrl = 'https://randomuser.me/api'
@@ -7,7 +7,10 @@ const randomUserUrl = 'https://randomuser.me/api'
 const CustomInstance = () => {
   const fetchData = async () => {
     try {
-      const resp1 = await authFetch('/react-store-products')
+      // Since we are using the custom instance, we have already set the baseURL, so we only need to provide the resource /react-store-products
+      const resp1 = await fetchCustom('/react-store-products')
+
+      // this one is simple fetch without the baseURL and headers used above
       const resp2 = await axios(randomUserUrl)
     } catch (error) {}
   }
