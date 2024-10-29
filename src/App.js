@@ -1,5 +1,5 @@
 import Title from './components/Title'
-import Headers from './examples/5-custom-instance'
+import Headers from './examples/2-headers'
 
 function App() {
   return (

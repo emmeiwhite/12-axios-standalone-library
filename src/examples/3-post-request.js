@@ -12,6 +12,7 @@ const PostRequest = () => {
 
     if ((name, email)) {
       try {
+        // post : means sending data from the client to the server!
         const response = await axios.post(url, {
           name,
           email
